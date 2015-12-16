@@ -8,7 +8,7 @@ var userSchema = new mongoose.Schema({
     image:    { type: String },
     role:     { type: String, required: true, default: "member" }
   },
-  privatechats: [privatechats.Schema]
+  privatechats: [Privatechat.Schema]
   // ,
   //   facebook: {
   //     id:           { type: String },
