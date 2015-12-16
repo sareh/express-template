@@ -2,8 +2,9 @@ var express  = require('express');
 var passport = require('passport');
 var router   = express.Router();
 
-var usersController = require('../controllers/usersController');
 var authenticationsController = require('../controllers/authenticationsController');
+var usersController = require('../controllers/usersController');
+var chatsController = require('../controllers/chatsController');
 
 router.post('/login',     authenticationsController.login)
 router.post('/register',  authenticationsController.register)
@@ -19,16 +20,15 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(usersController.usersShow)
-  .put(usersController.usersUpdate)
   .patch(usersController.usersUpdate)
   .delete(usersController.usersDelete)
 
 router.route('/chats')
   .get(chatsController.chatsIndex)
+  .post(chatsController.chatsCreate)
 
 router.route('/chats/:id')
   .get(chatsController.chatsShow)
-  .put(chatsController.chatsUpdate)
   // .patch(chatsController.chatsUpdate)
   // .delete(chatsController.chatsDelete)
   
