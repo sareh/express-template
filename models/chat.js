@@ -7,9 +7,7 @@ var chatSchema = new mongoose.Schema({
   created_by:    { type: mongoose.Schema.ObjectId, ref: 'User' },
   participants: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 },
-{ 
-  timestamps: { true } 
-}
+{ timestamps: true }
 );
 
 module.exports = mongoose.model("Chat", chatSchema);

@@ -59,9 +59,7 @@ var userSchema = new mongoose.Schema({
   //     last_name:    { type: String },
   //   }
 },
-{ 
-  timestamps: { true } 
-});
+{ timestamps: true });
 
 
 userSchema.statics.encrypt = function(password) {
