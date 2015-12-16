@@ -1,16 +1,14 @@
 var mongoose = require('mongoose');
 var io       = require('socket.io');
-var User     = require('user');
+var User     = require('./user');
 
 var chatSchema = new mongoose.Schema({
-  title:      { type: String, required: true },
-  // created_by:  User.Schema,
-  // users:      [User.Schema]
+  title:         { type: String, required: true },
+  created_by:    { type: mongoose.Schema.ObjectId, ref: 'User' },
+  participants: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 },
 { 
-  timestamps: { createdAt: 'created_at',
-                updatedAt: 'updated_at' 
-              } 
+  timestamps: { true } 
 }
 );
 

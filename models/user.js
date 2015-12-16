@@ -1,7 +1,7 @@
 var mongoose    = require('mongoose');
 var bcrypt      = require('bcrypt-nodejs');
-var Chat        = require('chat');
-var Privatechat = require('privatechat');
+// var Chat        = require('chat');
+// var Privatechat = require('privatechat');
 
 var userSchema = new mongoose.Schema({
   local: {
@@ -58,6 +58,9 @@ var userSchema = new mongoose.Schema({
   //     first_name:   { type: String },
   //     last_name:    { type: String },
   //   }
+},
+{ 
+  timestamps: { true } 
 });
 
 
