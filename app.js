@@ -65,10 +65,11 @@ app.use(function (err, req, res, next) {
 
 var routes = require('./config/routes');
 app.use("/api", routes);
-
-// https://github.com/ga1989/NEAN-2-Realtime-ChatApp-Node-Socketio/blob/master/app.js
 var port = process.env.PORT || 3000;
-var io   = require('socket.io').listen(app.listen(port));
-require('./config/chat')(app, io);
-require('./config/chatroutes')(app, io);
+app.listen(port);
+// https://github.com/ga1989/NEAN-2-Realtime-ChatApp-Node-Socketio/blob/master/app.js
+// var io   = require('socket.io').listen(app.listen(port));
+// require('./config/chat')(app, io);
+// require('./config/chatroutes')(app, io);
+
 console.log('App is running on port ' + port);
