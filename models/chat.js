@@ -4,8 +4,9 @@ var User     = require('./user');
 
 var chatSchema = new mongoose.Schema({
   title:         { type: String, required: true },
-  created_by:    { type: mongoose.Schema.ObjectId, ref: 'User' },
-  participants: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
+  createdBy:     { type: mongoose.Schema.ObjectId, ref: 'User' },
+  participants: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  description:   { type: String }
 },
 { timestamps: true }
 );
