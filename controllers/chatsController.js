@@ -22,21 +22,6 @@ function chatsCreate(req, res) {
   });
 }
 
-function chatsJoin(req, res) {
-  console.log("Inside chatsJoin!");
-  Chat.findById(req.params.id, function(err, chat){
-    if (err) return res.status(404).send({ message: 'Sorry, something went wrong.' });
-    console.log(req.body);
-    var joiningUserId = req.body.currentUser._id;
-    console.log(joiningUserId);
-    chat.participants.push(joiningUserId);
-    res.status(200).send(chat);
-    // res.status(200).json({ chat: chat ,
-    //                       message: "Welcome to the chat"
-    //                     });
-  });
-}
-
 function chatsUpdate(req, res) {
   Chat.findById(req.params.id,  function(err, chat) {
     if (err) return res.status(500).json({message: "Sorry, something went wrong!"});
@@ -48,8 +33,38 @@ function chatsUpdate(req, res) {
     chat.save(function(err) {
      if (err) return res.status(500).json({message: "Sorry, something went wrong."});
 
-     res.status(201).json({message: 'Chat successfully updated.', chat: chat});
+     res.status(201).send({
+                            chat: chat,
+                            message: 'Chat successfully updated.'
+                          });
    });
+  });
+}
+
+function chatsJoin(req, res) {
+  Chat.findById(req.params.id, function(err, chat) {
+    if (err) return res.status(404).send({ message: 'Sorry, something went wrong.' });
+
+    if (req.body.currentUser._id) {
+      var joiningUserId = req.body.currentUser._id;
+      chat.participants.push(joiningUserId);
+      res.status(200).send({ chat: chat,
+                             message: "Welcome to the chat"
+                            });
+    }
+  });
+}
+
+function chatsLeave(req, res) {
+  //We never get to this one, due to the routes
+  Chat.findById(req.params.id, function(err, chat) {
+    if (err) return res.status(404).send({ message: 'Sorry, something went wrong.' });
+
+    if (req.body.currentUser._id) {
+      var index = chat.participants.indexOf('req.body.currentUser._id');
+      chat.participants.splice(index, 1);
+      res.status(200).send({ message: "Bye!" });  
+    }
   });
 }
 
@@ -66,5 +81,6 @@ module.exports = {
   chatsCreate: chatsCreate,
   chatsUpdate: chatsUpdate,
   chatsJoin:   chatsJoin,
+  chatsLeave:  chatsLeave,
   chatsDelete: chatsDelete
 }
