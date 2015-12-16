@@ -22,11 +22,13 @@ function chatsCreate(req, res) {
   });
 }
 
-function chatJoin(req, res) {
+function chatsJoin(req, res) {
+  console.log("Inside chatsJoin!");
   Chat.findById(req.params.id, function(err, chat){
     if (err) return res.status(404).send({ message: 'Sorry, something went wrong.' });
-    
+    console.log(req.body);
     var joiningUserId = req.body.currentUser._id;
+    console.log(joiningUserId);
     chat.participants.push(joiningUserId);
     res.status(200).send(chat);
     // res.status(200).json({ chat: chat ,
@@ -35,7 +37,7 @@ function chatJoin(req, res) {
   });
 }
 
-function chatsUpdate(req, res){
+function chatsUpdate(req, res) {
   Chat.findById(req.params.id,  function(err, chat) {
     if (err) return res.status(500).json({message: "Sorry, something went wrong!"});
     if (!chat) return res.status(404).json({message: 'No chat found.'});
@@ -51,10 +53,18 @@ function chatsUpdate(req, res){
   });
 }
 
+function chatsDelete(req, res) {
+  Chat.findByIdAndRemove({ _id: req.params.id }, function(err) {
+    if (err) return res.status(500).send({ message: "Sorry, something went wrong!"});
+    res.status(200).send({ message: "Chat successfully deleted!" });
+  });
+}
+
 module.exports = {
   chatsIndex:  chatsIndex,
   chatsShow:   chatsShow,
   chatsCreate: chatsCreate,
   chatsUpdate: chatsUpdate,
-  chatJoin:    chatJoin
+  chatsJoin:   chatsJoin,
+  chatsDelete: chatsDelete
 }

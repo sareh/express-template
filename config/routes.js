@@ -30,7 +30,7 @@ router.route('/chats')
 router.route('/chats/:id')
   .get(chatsController.chatsShow)
   .patch(chatsController.chatsUpdate)
-  // .patch(chatsController.chatsJoin)
-  // .delete(chatsController.chatsDelete)
+  .patch(chatsController.chatsJoin)
+  .delete(chatsController.chatsDelete)
   
 module.exports = router;
