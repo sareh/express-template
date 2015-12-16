@@ -1,0 +1,25 @@
+{
+  "name": "express-template",
+  "version": "1.0.0",
+  "description": "A back-end app using Node.js, Express &amp; MongoDB (via Mongoose).",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sareh/express-template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sareh/express-template/issues"
+  },
+  "homepage": "https://github.com/sareh/express-template#readme",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "gravatar": "^1.4.0",
+    "socket.io": "^1.3.7"
+  }
+}
