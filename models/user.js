@@ -1,5 +1,8 @@
-var mongoose   = require('mongoose');
-var bcrypt     = require('bcrypt-nodejs');
+var mongoose    = require('mongoose');
+var bcrypt      = require('bcrypt-nodejs');
+var Chat        = require('chat');
+var Privatechat = require('privatechat');
+
 var userSchema = new mongoose.Schema({
   local: {
     email:    { type: String, required: true, unique: true },
@@ -7,8 +10,9 @@ var userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     image:    { type: String },
     role:     { type: String, required: true, default: "member" }
-  },
-  privatechats: [Privatechat.Schema]
+  }
+  // ,
+  // privatechats: [privatechat.Schema]
   // ,
   //   facebook: {
   //     id:           { type: String },
@@ -55,5 +59,14 @@ var userSchema = new mongoose.Schema({
   //     last_name:    { type: String },
   //   }
 });
+
+
+userSchema.statics.encrypt = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+userSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.local.password);
+}
 
 module.exports = mongoose.model("User", userSchema);
