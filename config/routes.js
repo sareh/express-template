@@ -23,4 +23,13 @@ router.route('/users/:id')
   .patch(usersController.usersUpdate)
   .delete(usersController.usersDelete)
 
+router.route('/chats')
+  .get(chatsController.chatsIndex)
+
+router.route('/chats/:id')
+  .get(chatsController.chatsShow)
+  .put(chatsController.chatsUpdate)
+  // .patch(chatsController.chatsUpdate)
+  // .delete(chatsController.chatsDelete)
+  
 module.exports = router;
