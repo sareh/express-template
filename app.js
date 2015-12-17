@@ -16,6 +16,7 @@ var User           = require('./models/user');
 // var oauthshim      = require('./config/shim');
 // var credentials    = require('./config/credentials');
 var app            = express();
+var server         = require('http').createServer(app);
 
 mongoose.connect(config.database);
 require('./config/passport')(passport);
@@ -44,7 +45,8 @@ app.use('/api', expressJWT({ secret: secret })
   .unless({
     path: [
       { url: '/api/login',     methods: ['POST'] },
-      { url: '/api/register',  methods: ['POST'] }
+      { url: '/api/register',  methods: ['POST'] },
+      { url: '/',              methods: ['GET']  }
       // ,
       // { url: '/api/facebook',  methods: ['POST'] },
       // { url: '/api/github',    methods: ['POST'] },
@@ -65,8 +67,15 @@ app.use(function (err, req, res, next) {
 
 var routes = require('./config/routes');
 app.use("/api", routes);
+
+app.use(express.static('public'))
+
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
+})
+
 var port = process.env.PORT || 3000;
-app.listen(port);
+server.listen(port);
 // https://github.com/ga1989/NEAN-2-Realtime-ChatApp-Node-Socketio/blob/master/app.js
 // var io   = require('socket.io').listen(app.listen(port));
 // require('./config/chat')(app, io);

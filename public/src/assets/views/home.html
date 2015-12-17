@@ -1,0 +1,25 @@
+<section id="home" class="row" ng-show="users.checkLoggedIn()" ng-controller="chatsController as chats">
+  <ul class="small-11 small-centered medium-8 columns no-bullet">
+    <li><a class="button" href="#" ng-href="/chats">Browse Chats</a></li>
+    <li><a class="button" href="#" ng-href="/chats">Search Chats</a></li>
+    <li><a class="button" href="#" >Start New Chat</a></li>
+    <li id="new-chat" ng-show="chats.showNewForm">
+
+      <form id="new-chat-form" ng-submit="chats.create()">
+        <div class="row">
+          <div class="small-11 medium-8 columns">
+            <label for="new-chat-title">Subject for the new Chat:</label>
+            <input type="text" id="new-chat-title" placeholder="e.g. Managing Anxiety">
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-11 medium-8 columns">
+            <button class="button" type="submit">Start</button>
+          </div>
+        </div>
+      </form>
+
+    </li>
+    <li><a class="button" href="#" ng-href="/users?role=therapist" ng-click="privatechats.indexAvailableTherapists()">Chat with a Therapist</a></li>
+  </ul>
+</section>

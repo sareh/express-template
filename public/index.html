@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="templateApp" lang="en" dir="ltr">
+<head>
+  <title>Angular Template</title>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="/dist/assets/js/angular-vendor-concat.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/dist/assets/js/angular-app-concat.js"></script>
+  <link rel="stylesheet" type="text/css" href="/dist/assets/css/app.css">
+</head>
+<body ng-controller="usersController as users">
+  <!-- <header ui-view="navigation"> -->
+  <header>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area no-bullet">
+        <li class="name">
+          <h1><a href="#">Angular App</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="top-bar-right right no-bullet">
+          <li ng-hide="users.isLoggedIn()"><a href="#" ui-sref-active="active" ui-sref="login">Login</a></li>
+          <li ng-hide="users.isLoggedIn()"><a href="#" ui-sref-active="active" ui-sref="register">Register</a></li>
+          <li ng-show="users.isLoggedIn()"><a href="#" ui-sref-active="active" ui-sref="profile">My Profile</a></li>
+          <li ng-show="users.isLoggedIn()"><a href="#" ui-sref-active="active" ui-sref="users">Users</a></li>
+          <li ng-show="users.isLoggedIn()"><a href="#" ui-sref-active="active" ui-sref="chats">Chats</a></li>
+          <li ng-show="users.isLoggedIn()"><a href="#" ui-sref="home" ng-click="users.logout()">Logout</a></li>
+        </ul>
+      </section>
+    </nav>
+  </header>
+  <noscript>
+    <div class="row">
+      <p class="small-8 small-offset-2 small-centred columns">This site only works with JavaScript turned on. To find out how you can turn on JavaScript in your web browser, visit this site: <a href="http://www.enable-javascript.com/" target="_blank">http://www.enable-javascript.com/</a>.</p>
+    </div>
+  </noscript>
+  <main ui-view>
+  </main>
+  <script type="text/javascript" src="/dist/assets/js/javascript-foundation-concat.js"></script>
+</body>
+</html>

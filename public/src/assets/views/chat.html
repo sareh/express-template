@@ -1,0 +1,29 @@
+<!-- chat was passed in as 
+    ng-controller="chatsController as chats"
+    "chat in chats.all"
+ -->
+<section id="chat-show">
+  <div class="row">
+    <div class="small-12 medium-8 medium-offset-2 columns">
+    <!-- {{ chats.chat. }} -->
+    </div>
+  </div>
+</section>
+
+<div id="new-message" >
+  <form id="new-message-form" ng-submit="chats.addMessage(chats.newMessage)">
+  
+    <div class="row">
+      <div class="small-12 medium-8 medium-offset-2 columns">
+        <input type="textbox" ng-model="chats.newMessage" aria-label="new-message-box" placeholder="Join in the conversation...">
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="small-12 medium-8 medium-offset-2 columns">
+        <button type="submit">Send</button>
+      </div>
+    </div>
+
+  </form>  
+</div>
