@@ -28,5 +28,5 @@ function ChatsController(User, Chat, currentUser) {
     });
   }
 
-  self.getChats();
+  // self.getChats();
 }

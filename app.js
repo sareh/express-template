@@ -71,11 +71,15 @@ app.use("/api", routes);
 app.use(express.static('public'))
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + 'index.html');
 })
 
 var port = process.env.PORT || 3000;
 server.listen(port);
+
+var io = require('socket.io')(server);
+console.log(io);
+
 // https://github.com/ga1989/NEAN-2-Realtime-ChatApp-Node-Socketio/blob/master/app.js
 // var io   = require('socket.io').listen(app.listen(port));
 // require('./config/chat')(app, io);

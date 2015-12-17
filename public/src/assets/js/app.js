@@ -12,39 +12,39 @@ angular
 MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function MainRouter($stateProvider, $urlRouterProvider){
-
+ 
   $stateProvider
-    .state('home', {
+    .state('home', { 
       url: '/',
-      templateUrl: '/public/dist/assets/views/home.html',
+      templateUrl: '/src/assets/views/home.html',
     })
     .state('about', {
       url: '/about',
-      templateUrl: '/public/dist/assets/views/about.html',
+      templateUrl: '/src/assets/views/about.html',
     })
     .state('register', {
       url: '/register',
-      templateUrl: '/public/dist/assets/views/register.html',
+      templateUrl: '/src/assets/views/register.html',
     })
     .state('login', {
       url: '/login',
-      templateUrl: '/public/dist/assets/views/login.html',
+      templateUrl: '/src/assets/views/login.html',
     })
     .state('users', {
       url: '/users',
-      templateUrl: '/public/dist/assets/views/users.html',
+      templateUrl: '/src/assets/views/users.html',
     })
     .state('chats', {
       url: '/chats',
-      templateUrl: '/public/dist/assets/views/chats.html',
+      templateUrl: '/src/assets/views/chats.html',
     })
     .state('chat', {
       url: '/chat',
-      templateUrl: '/public/dist/assets/views/chat.html',
+      templateUrl: '/src/assets/views/chat.html',
     })
     // .state('newchat', {
     //   url: "/newchat",
-    //   templateUrl: "/public/dist/assets/views/newchat.html"
+    //   templateUrl: "/src/assets/views/newchat.html"
     // });
   $urlRouterProvider.otherwise('/');
 }

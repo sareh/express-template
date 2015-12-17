@@ -53,7 +53,7 @@ function UsersController($resource, User, tokenService, $state, currentUser) {
   }
 
   if (currentUser.getUser()) {
-    self.getUsers();
+    // self.getUsers();
     // self.user = tokenService.decodeToken();
   }
 
