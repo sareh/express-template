@@ -1,10 +1,12 @@
+<h1>Login</h1>
+
 <section id="login">
   <h2>Log in</h2>
   <form id="login-form" name="users.loginForm" ng-submit="users.login()" novalidate>
     <div class="row">
       <div class="large-12 columns">
         <label for="login-email">Email</label>
-        <input type="text" id="login-email" name="email" placeholder="email address">
+        <input type="text" id="login-email" name="email" placeholder="email address" ng-model="users.user.email">
         <div class="ng-message-error error" ng-messages="users.loginForm['email'].$error" ng-show="(users.loginForm.$submitted && users.loginForm['email'].$invalid)">
           <p ng-message="required">Email address is required.</p>
         </div>
@@ -13,7 +15,7 @@
     <div class="row">
       <div class="large-12 columns">
         <label for="login-password">Password</label>
-        <input type="password" id="login-password" name="password" placeholder="password">
+        <input type="password" id="login-password" name="password" placeholder="password" ng-model="users.user.password">
         <div class="ng-message-error error" ng-messages="users.loginForm['password'].$error" ng-show="(users.loginForm.$submitted && users.loginForm['password'].$invalid)">
           <p ng-message="required">Password is required.</p>
         </div>

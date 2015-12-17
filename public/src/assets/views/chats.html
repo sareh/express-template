@@ -1,10 +1,10 @@
-<section id="chats">
-{{ chats.all }}
+<h1>Chats</h1>
 
+<section id="chats">
   <ul class="row no-bullet">
-    <li ng-repeat="chat in chats.all" class="small-10 small-offset-1 medium-8 medium-offset-2 columns">
+    <li ng-repeat="chat in chats.all">
       <ul class="no-bullet">
-        <li class="chat-title"><a href="" ng-click="chats.show(chat._id)">{{ chat.title }}</a></li>
+        <li class="chat-title"><a href="" ui-sref="chat({id: chat._id })">{{ chat.title }}</a></li>
         <li class="chat-timestamp">{{ chat.createdAt }}</li>
         <li class="chat-timestamp">{{ chat.updatedAt }}</li>
       </ul>

@@ -46,26 +46,32 @@
 @import 'custom_colors';
 
 /*$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;*/
- 
-body {
-  background-color: $body-background;
 
-  .top-bar {
-    background-color: $primary-color;
-    ul {
-      background-color: $primary-color;
-      li {
-        a {
-          color: $body-font-color;
-        }
-        &:hover, 
-        &:focus { 
-          background-color: $secondary-color;
-        }  
-      }
-    }
-  }
+.chat-window {
+  min-height: 300px;
+  overflow: scroll;
+  border: 1px solid #000;
 }
-li {
-  list-style-type: none;
-}
+
+// body {
+//   background-color: $body-background;
+
+//   .top-bar {
+//     background-color: $primary-color;
+//     ul {
+//       background-color: $primary-color;
+//       li {
+//         a {
+//           color: $body-font-color;
+//         }
+//         &:hover, 
+//         &:focus { 
+//           background-color: $secondary-color;
+//         }  
+//       }
+//     }
+//   }
+// }
+// li {
+//   list-style-type: none;
+// }

@@ -2,8 +2,8 @@ angular
   .module('templateApp')
   .service('currentUser', CurrentUser);
 
-CurrentUser.$inject = ['User', 'tokenService']
-function CurrentUser(User, tokenService){
+CurrentUser.$inject = ['tokenService']
+function CurrentUser(tokenService){
 
   var self  = this;
   self.user = {} 
@@ -13,7 +13,7 @@ function CurrentUser(User, tokenService){
   }
 
   self.getUser = function(){
-    return self.user;
+    return tokenService.decodeToken();
   }
 
   self.clearUser = function(){

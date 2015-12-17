@@ -7,6 +7,7 @@ UsersController.$inject = ['$resource', 'User', 'tokenService', '$state', 'curre
 function UsersController($resource, User, tokenService, $state, currentUser) {
   
   var self = this;
+  this.controllerName = "usersController"
 
   self.all          = [];
   self.user         = {};

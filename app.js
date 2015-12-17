@@ -78,7 +78,24 @@ var port = process.env.PORT || 3000;
 server.listen(port);
 
 var io = require('socket.io')(server);
-console.log(io);
+
+io.on("connect", function(socket){
+  socket.emit("test")
+
+  // Create a new one on "chatConnect"
+  socket.on("chatConnect", function(id) {
+    // Get messages from that chat using the id
+    // socket.join(id)
+    // io.emit("updateMessages", data);
+  })
+
+  socket.on("newMessage", function(data) {
+    // SAVE HERE
+    console.log("Message received ", data);
+    io.emit("updateMessages", data);
+  })
+})
+
 
 // https://github.com/ga1989/NEAN-2-Realtime-ChatApp-Node-Socketio/blob/master/app.js
 // var io   = require('socket.io').listen(app.listen(port));

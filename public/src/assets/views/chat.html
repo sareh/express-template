@@ -1,29 +1,33 @@
-<!-- chat was passed in as 
-    ng-controller="chatsController as chats"
-    "chat in chats.all"
- -->
+<h1>Chat</h1>
+
 <section id="chat-show">
   <div class="row">
     <div class="small-12 medium-8 medium-offset-2 columns">
-    <!-- {{ chats.chat. }} -->
+      <h2>{{ chats.chat.title }}</h2>
     </div>
   </div>
+  <div class="row">
+    <ul class="chat-window small-12 medium-8 medium-offset-2 columns">
+      <li ng-repeat="message in chats.messages">
+        {{ message.content }} {{ message.author }} {{ message.timestamp }} {{ message.chat_id }}
+      </li>
+    </ul>
+  </div>
+  
 </section>
 
 <div id="new-message" >
-  <form id="new-message-form" ng-submit="chats.addMessage(chats.newMessage)">
-  
+  <form id="new-message-form" ng-submit="chats.addMessage()">
     <div class="row">
       <div class="small-12 medium-8 medium-offset-2 columns">
-        <input type="textbox" ng-model="chats.newMessage" aria-label="new-message-box" placeholder="Join in the conversation...">
+        <input type="textbox" ng-model="chats.newMessage.content" aria-label="new-message-box" placeholder="Say something">
       </div>
     </div>
     
     <div class="row">
       <div class="small-12 medium-8 medium-offset-2 columns">
-        <button type="submit">Send</button>
+        <button type="submit" class="button">Send</button>
       </div>
     </div>
-
   </form>  
 </div>

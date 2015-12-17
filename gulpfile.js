@@ -78,6 +78,7 @@ var PATHS = {
     'public/src/assets/js/services/tokenService.js',
     'public/src/assets/js/services/authInterceptor.js',
     'public/src/assets/js/services/currentUser.js',
+    'public/src/assets/js/services/socketFactory.js',
     'public/src/assets/js/models/user.js',
     'public/src/assets/js/models/chat.js',
     'public/src/assets/js/controllers/usersController.js',

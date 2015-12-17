@@ -17,10 +17,15 @@ function MainRouter($stateProvider, $urlRouterProvider){
     .state('home', { 
       url: '/',
       templateUrl: '/src/assets/views/home.html',
+      controller: 'chatsController as chats'
     })
     .state('about', {
       url: '/about',
       templateUrl: '/src/assets/views/about.html',
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: '/src/assets/views/profile.html',
     })
     .state('register', {
       url: '/register',
@@ -34,13 +39,15 @@ function MainRouter($stateProvider, $urlRouterProvider){
       url: '/users',
       templateUrl: '/src/assets/views/users.html',
     })
+    .state('chat', {
+      url: '/chats/:id',
+      templateUrl: '/src/assets/views/chat.html',
+      controller: 'chatsController as chats'
+    })
     .state('chats', {
       url: '/chats',
       templateUrl: '/src/assets/views/chats.html',
-    })
-    .state('chat', {
-      url: '/chat',
-      templateUrl: '/src/assets/views/chat.html',
+      controller: 'chatsController as chats'
     })
     // .state('newchat', {
     //   url: "/newchat",
