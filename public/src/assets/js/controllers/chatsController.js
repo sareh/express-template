@@ -7,13 +7,17 @@ ChatsController.$inject = ['User', 'Chat', 'currentUser', 'socket', '$stateParam
 function ChatsController(User, Chat, currentUser, socket, $stateParams, $state) {
   var self  = this;
   
-  self.all         = [];
-  self.chat        = {};
-  self.all         = all;
-  self.get         = get;
-  self.create      = create;
-  self.newMessage  = {}
-  self.addMessage  = addMessage;
+  self.all           = [];
+  self.chat          = {};
+  self.all           = all;
+  self.get           = get;
+  self.create        = create;
+  self.newMessage    = {}
+  self.addMessage    = addMessage;
+  self.joinChat      = joinChat;
+  self.currentChatId = '';
+  self.currentUserId = '';
+
   self.messages    = [
     {
       content: "Having problems with this.",
@@ -28,6 +32,7 @@ function ChatsController(User, Chat, currentUser, socket, $stateParams, $state) 
   ]
 
   if ($stateParams.id) {
+    console.log($stateParams)
     // Emit a new chatConnect to fetch the messages and add them to self.messages
     socket.emit("chatConnect", $stateParams.id) // Get me the messages Yo
     get($stateParams.id);
@@ -58,9 +63,19 @@ function ChatsController(User, Chat, currentUser, socket, $stateParams, $state) 
     });
   }
 
-  function addMessage(){
+  function joinChat() {
+    // console.log(self.chat);
+    // need to send the chat._id,
+    // currentUser.getUser()._id;
+    // socket.emit("joinChat", 
+    //   { currentChatId: $stateParams.id, 
+    //     currentUserId: currentUser.getUser()._id 
+    //   });
+    socket.emit("joinChat", $stateParams.id);
+  }
+  function addMessage() {
     console.log(self.newMessage)
-    self.newMessage.chat_id = $stateParams.id; 
+    self.newMessage.chatId = $stateParams.id; 
     self.newMessage.author  = currentUser.getUser()._id;
     self.newMessage.timestamp = new Date();
 

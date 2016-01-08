@@ -14,7 +14,7 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">This is mental</li>
+          <li class="menu-text">Support</li>
           <li>
             <a href="#" ui-sref="home">Home</a>
           </li>
@@ -27,9 +27,9 @@
           <li ng-show="users.isLoggedIn()">
             <a href="#" ui-sref-active="active" ui-sref="profile">My Profile</a>
           </li>
-          <li ng-show="users.isLoggedIn()">
+<!--           <li ng-show="users.isLoggedIn()">
             <a href="#" ui-sref-active="active" ui-sref="users">Users</a>
-          </li>
+          </li> -->
           <li ng-show="users.isLoggedIn()">
             <a href="#" ui-sref-active="active" ui-sref="chats">Chats</a>
           </li>
@@ -53,6 +53,7 @@
     </div>
   </noscript>
   <main ui-view>
+
   </main>
   <script type="text/javascript" src="/dist/assets/js/javascript-foundation-concat.js"></script>
 </body>

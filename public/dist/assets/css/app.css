@@ -3680,3 +3680,13 @@ table.hover tr:nth-of-type(even):hover {
   min-height: 300px;
   overflow: scroll;
   border: 1px solid #000; }
+
+.sticky-chat-footer#join-chat {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 132px; }
+
+.sticky-chat-footer#new-message {
+  height: 88px; }
