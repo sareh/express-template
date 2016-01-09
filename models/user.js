@@ -10,6 +10,7 @@ var userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     image:    { type: String },
     role:     { type: String, required: true, default: "member" }
+    pronouns: { type: String }
   }
   // ,
   // privatechats: [privatechat.Schema]

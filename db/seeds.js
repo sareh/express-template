@@ -21,13 +21,16 @@ function confirmPrivateChatSave(err, privateChat){
   console.log("Private Chat has been added.", privateChat);
 }
 
+// Users
+
 var user1 = new User({
   local: {
     email:     "sareh@h.com",
     username:  "sareh",
-    password:  "password",
-    image:     "/images/flower.png",
-    role:      "member"
+    password:  User.encrypt("password"),
+    image:     "/images/blue.png",
+    role:      "member",
+    pronouns:  "she/her"
   }
 });
 
@@ -37,13 +40,42 @@ var user2 = new User({
   local: {
     email:     "amelia@a.com",
     username:  "amelia",
-    password:  "password",
+    password:  User.encrypt("password"),
     image:     "/images/flower.png",
-    role:      "member"
+    role:      "member",
+    pronouns:  "she/her"
   }
 });
 
 user2.save(confirmUserSave);
+
+var user3 = new User({
+  local: {
+    email:     "alex@a.com",
+    username:  "alex",
+    password:  User.encrypt("password"),
+    image:     "/images/blue.png",
+    role:      "member",
+    pronouns:  "they/their"
+  }
+});
+
+user3.save(confirmUserSave);
+
+var user4 = new User({
+  local: {
+    email:     "aaron@a.com",
+    username:  "aaron",
+    password:  User.encrypt("password"),
+    image:     "/images/flower.png",
+    role:      "member",
+    pronouns:  "he/him"
+  }
+});
+
+user4.save(confirmUserSave);
+
+// Chats
 
 var chat1 = new Chat({ 
 
@@ -64,14 +96,15 @@ var chat2 = new Chat({
 
 chat2.save(confirmChatSave);
 
-
 var chat3 = new Chat({ 
 
     title:         "Mindfulness",
     createdBy:     user1._id,
-    participants: [user1._id, user2._id],
-    description:   "Sharing tips & resources that helped me."
+    participants: [user1._id, user4._id, user3._id],
+    description:   "Sharing tips & resources that helped me get started."
 });
 
 chat3.save(confirmChatSave);
+
+// Private Chats
 
